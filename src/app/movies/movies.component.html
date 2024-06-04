@@ -1,0 +1,40 @@
+
+<div class="header">
+  <h2>Les films</h2>
+  <a class="btn btn-outline-primary" routerLink="/add-movie">Ajouter un film</a>
+  <a class="btn btn-secondary" href="/movies/stats">Statistique</a>
+  <a class="btn btn-outline-dark" href="/movies/stats">Export</a>
+</div>
+
+
+<table class ="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Titre</th>
+    <th scope="col">Date de sortie</th>
+    <th scope="col">Réalisateur</th>
+    <th scope="col">Note</th>
+    <th scope="col">Synopsis</th>
+    <th scope="col">Action</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  @for (movie of movies ; track movie.id){
+    <tr>
+      <td scope="row">{{movie.id}}</td>
+      <td>{{movie.title}}</td>
+      <td>{{movie.releaseDate| date:'dd/MM/yyyy'}}</td>
+      <td>{{movie.director}}</td>
+      <td>{{movie.rate}}</td>
+      <td>{{movie.synopsis}}</td>
+      <td>
+        <button type="button" class="btn btn-update updateButton" routerLink="/upd-movie" [queryParams]="{ idmovie: movie.id }"><i class="bi bi-pencil"></i></button>
+        <button type="button" class="btn btn-danger deleteButton" (click)=" movie.id && deleteMovie(movie.id)"><i class="bi bi-trash-fill"></i></button>
+
+    </tr>
+  }
+  </tbody>
+
+</table>

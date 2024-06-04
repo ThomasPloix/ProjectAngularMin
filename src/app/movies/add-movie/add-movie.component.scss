@@ -1,0 +1,38 @@
+.d-flex {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+
+  label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+
+    &[type="number"] {
+      // Styles spécifiques pour les champs de saisie de type "number"
+    }
+  }
+}
+
+.btn-warning {
+  display: block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffc107;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #ffa000;
+  }
+}
