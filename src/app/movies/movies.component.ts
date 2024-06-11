@@ -4,6 +4,7 @@ import {Movie} from "../models/movie";
 import {MoviesService} from "../services/movies.service";
 import {AsyncPipe, DatePipe} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {CsvExportService} from "../services/csv-export.service";
 
 @Component({
   selector: 'app-movies',
@@ -18,6 +19,7 @@ import {RouterLink} from "@angular/router";
 })
 export class MoviesComponent {
   private readonly moviesService = inject(MoviesService)
+  private exportService = inject(CsvExportService);
   movies$: Observable<Movie[]> = this.moviesService.getMovies();
   movies: Movie[] = [];
 
@@ -36,5 +38,9 @@ export class MoviesComponent {
       }
     );
 
+  }
+
+  exportData() {
+    this.exportService.exportToCsv('movies.csv', this.movies);
   }
 }
